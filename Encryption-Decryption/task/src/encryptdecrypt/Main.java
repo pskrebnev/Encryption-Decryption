@@ -22,16 +22,10 @@ public class Main {
     private static String decryptor(String st, int shift) {
         StringBuilder sb = new StringBuilder();
         char c[] = st.toCharArray();
-        int realShift = shift % period;
+        char newChar;
 
         for (char ch : c) {
-            char newChar;
-            if (ch >= begin && ch <= end) {
-                // do shift
-                newChar = (char)((((ch - begin) + (period - realShift)) % period) + begin);
-            } else {
-                newChar = ch;
-            }
+            newChar = (char) (ch - shift);
             sb.append(newChar);
         }
         return sb.toString();
@@ -40,16 +34,9 @@ public class Main {
     private static String encryptor(String st, int shift) {
         StringBuilder sb = new StringBuilder();
         char c[] = st.toCharArray();
-        int realShift = shift % period;
-
         for (char ch : c) {
             char newChar;
-            if (ch >= begin && ch <= end) {
-                // do shift
-                newChar = (char) (((ch - begin + realShift) % period) + begin);
-            } else {
-                newChar = ch;
-            }
+            newChar = (char) (ch + shift);
             sb.append(newChar);
         }
         return sb.toString();
@@ -60,9 +47,9 @@ public class Main {
 //        String phrase = scanner.nextLine();
 //        int shift = scanner.nextInt();
 
-        String phrase = "Welcome to hyperskill!";
+        String phrase = "\\jqhtrj%yt%m~ujwxpnqq&";
         int shift = 5;
 
-        System.out.println(encDec("enc", phrase, shift));
+        System.out.println(encDec("dec", phrase, shift));
     }
 }
