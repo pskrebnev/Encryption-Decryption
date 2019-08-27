@@ -3,19 +3,13 @@ package encryptdecrypt;
 import java.util.Scanner;
 
 public class Main {
-    private static char begin = 'a';
-    private static char end = 'z';
-    private static int period = end - begin + 1;
 
-
-    private static String encDec(String mode, String phrase, int shift) {
+    private static String encDec(String mode, int key, String data) {
         switch (mode) {
-            case "enc":
-                return encryptor(phrase, shift);
             case "dec":
-                return decryptor(phrase, shift);
+                return decryptor(data, key);
             default:
-                return "Please, choose encryption or decryption";
+                return encryptor(data, key);
         }
     }
 
@@ -43,13 +37,14 @@ public class Main {
     }
 
     public static void main(String[] args) {
-//        Scanner scanner = new Scanner(System.in);
-//        String phrase = scanner.nextLine();
-//        int shift = scanner.nextInt();
+        Scanner scanner = new Scanner(System.in);
+        String mode = scanner.nextLine();
+        int key = scanner.nextInt();
+        String data = scanner.nextLine();
 
         String phrase = "\\jqhtrj%yt%m~ujwxpnqq&";
         int shift = 5;
 
-        System.out.println(encDec("dec", phrase, shift));
+        System.out.println(encDec(mode, key, data));
     }
 }
